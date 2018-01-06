@@ -1,8 +1,5 @@
-app/img
 node_modules/
 zl/
 .bowerrc
 bower.json
-gulpfile.js
-package.json
 package-lock.json
