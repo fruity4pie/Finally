@@ -13,5 +13,8 @@
     "font-awesome": "*",
     "page-scroll-to-id": "*",
     "owl.carousel": "*"
+  },
+  "devDependencies": {
+    "fancybox": "^3.2.5"
   }
 }

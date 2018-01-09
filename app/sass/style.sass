@@ -221,6 +221,37 @@ body
 		right: 18px
 		top: 50%
 		transform: translate(0, -50%)
+	&-brief
+		width: 106px
+		font: 17px RWB
+		line-height: 40px
+		&_skip
+			background-color: #d3d3d3
+			color: #3e3e3e
+			&:hover
+				border-radius: 24px
+				background-color: #b0b0b0
+				border-color: #b0b0b0
+				color: #3e3e3e
+		&_paypal
+			max-width: 305px
+			width: 100%
+		&_nonactive
+			background-color: #ebebeb
+			&:hover
+				background-color: #ebebeb
+				border-color: #ebebeb
+				color: #fff
+		&_m-auto
+			margin: 0 auto
+		&_ml-auto
+			margin: 0 0 0 auto
+		&_ml265
+			margin: 0 0 0 265px
+		&_mr265
+			margin: 0 265px 0 0
+		&_ml-auto-mr265
+			margin: 0 265px 0 auto
 
 .header
 	background: #fff
@@ -548,6 +579,34 @@ body
 		left: 50%
 		transform: translate(-50%, 0)
 
+.instagram
+	background: #edeef3
+	padding: 34px 0 44px
+	&__container
+		display: flex
+		flex-flow: row wrap
+		justify-content: center
+		align-items: center
+	&__text
+		color: #191919
+		font: 30px RR
+		line-height: 61px
+		margin: 0 22px 0 0
+	&__img
+		vertical-align: middle
+		margin: 0 20px 0 0
+		width: 63px
+		height: 63px
+	&__link
+		color: #713aff
+		font: 30px RR
+		line-height: 38px
+		letter-spacing: 0.6px
+		text-decoration: none
+		display: flex
+		flex-flow: row nowrap
+		align-items: center
+
 .price
 	background: url('../img/price/back.png') no-repeat center/cover
 	background-attachment: fixed
@@ -557,6 +616,15 @@ body
 		flex-flow: row nowrap
 		justify-content: center
 		align-items: center
+		&_brief
+			max-width: 365px
+			width: 100%
+			position: relative
+			flex-flow: column nowrap
+			&_not-active
+				display: none
+			&_active
+				display: block
 		&__item
 			max-width: 457px
 			width: 100%
@@ -618,11 +686,27 @@ body
 			color: #000000
 			font: 15px "Open Sans"
 			line-height: 30px
+			&_brief
+				max-width: 305px
+				margin: 0 0 25px
+				position: relative
+				&:after
+					content: ''
+					width: 125%
+					height: 2px
+					background-color: #6900d4
+					opacity: 0.2
+					display: block
+					position: absolute
+					bottom: -10px
+					left: -30px
 			&__item
 				position: relative
 				display: flex
 				flex-flow: row nowrap
 				align-items: center
+				&_brief
+					justify-content: space-between
 				&:before
 					content: ''
 					background: #ff636d center no-repeat
@@ -649,6 +733,51 @@ body
 			color: #000000
 			font: 15px "Open Sans"
 			line-height: 30px
+		&-output
+			max-width: 305px
+			width: 100%
+			font: 15px "Open Sans"
+			&__item
+				&:before
+					display: none
+		&-cost
+			display: flex
+			flex-flow: row nowrap
+			align-items: center
+			position: relative
+			max-width: 35px
+			width: 100%
+			&__main
+				color: #000000
+				font: 15px "Open Sans"
+				line-height: 26px
+				text-transform: uppercase
+				letter-spacing: 0.3px
+				&_post
+					color: #9a9a9a
+					font: 13px "Open Sans"
+					text-decoration: line-through
+					text-transform: uppercase
+					position: absolute
+					top: 3px
+					right: -42px
+				&_pre
+					color: #ff636d
+					font: 15px "Open Sans"
+					line-height: 26px
+					text-transform: uppercase
+					letter-spacing: 0.3px
+					position: absolute
+					top: 0
+					left: -50px
+					&_blue
+						color: #6900d4
+			&_total
+				color: #333333
+				font: 700 22px "Open Sans"
+				line-height: 28.98px
+				text-transform: uppercase
+				letter-spacing: 0.39px
 	&__question
 		margin: 0 0 0 auto
 		width: 20px
@@ -734,6 +863,8 @@ body
 					background: #5b00b7
 		&_nonactive
 			background: #e9eaee !important
+			&:hover
+				background: #e9eaee !important
 
 .faq
 	background: #edeef3
@@ -845,5 +976,253 @@ body
 			transition: all .5s
 		&:hover:after
 			width: 100%
+
+.brief
+	background: url('../img/price/back.png') no-repeat center/cover
+	height: 100%
+	display: flex
+	flex-flow: column nowrap
+	justify-content: center
+	position: relative
+	&-progress
+		height: 14px
+		background-color: #ffffff
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+		z-index: 10
+		&__item
+			background: #ff5d64
+			height: 100%
+			width: 0
+	&-logo
+		margin: 135px auto 23px
+	&-box
+		display: flex
+		flex-flow: column nowrap
+		align-items: center
+		justify-content: center
+		&_wrap
+			flex-flow: row wrap
+			justify-content: space-around
+			max-width: 885px
+			height: 390px
+			overflow-y: scroll
+			margin: 0 auto 40px
+		&_input
+			max-width: 555px
+			margin: 0 auto 115px
+			&-m40
+				margin: 0 auto 40px
+			&-m34
+				margin: 0 auto 34px
+			&-m55
+				margin: 0 auto 55px
+			&-m12
+				margin: 0 auto 12px
+			&-m65
+				margin: 0 auto 65px
+			&-m67
+				margin: 0 auto 67px
+			&-m106
+				margin: 0 auto 106px
+	&-form
+		max-width: 946px
+		width: 100%
+		&__item
+			padding: 50px 50px 40px
+			margin: 0 0 100px
+			text-align: center
+			max-width: 946px
+			width: 100%
+			background: #fff
+			box-shadow: 0 5px 38px rgba(0, 0, 0, 0.21)
+			border-radius: 30px
+			transition: all .5s
+			height: auto
+			&_m300
+				margin: 0 0 35vh
+	&-number
+		color: #bebebe;
+		font: 700 25px RR
+		line-height: 28.98px
+		text-transform: uppercase
+		letter-spacing: 2.24px
+		margin: 0 0 45px
+	&-title
+		color: #000000
+		font: 700 26px RB
+		line-height: 28.98px
+		text-transform: uppercase
+		letter-spacing: 2.33px
+		margin: 0 0 25px
+		&_mod
+			color: #ffffff
+			font-size: 24px
+			letter-spacing: 4.31px
+			margin: 0 auto 93px
+		&_mw546
+			max-width: 546px
+			margin: 0 auto 8px
+		&_m27
+			margin: 0 auto 15px
+	&-par
+		color: #656565
+		font: 18px "Open Sans"
+		line-height: 29px
+		max-width: 547px
+		margin: 0 auto 25px
+		text-align: center
+		&_lh
+			line-height: 27px
+		&_m35
+			margin: 0 auto 35px
+		&_m54
+			margin: 0 auto 54px
+		&_m70
+			margin: 0 auto 70px
+		&_payments
+			font: 17px "Open Sans"
+			line-height: 27px
+			max-width: 590px
+	&-input
+		width: 100%
+		height: 60px
+		box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06)
+		border-radius: 10px
+		padding: 0 0 0 24px
+		background-color: #efe8f7
+		color: #242424
+		font: 16px RR
+		border: none
+		&::placeholder
+			color: #242424
+			font: 16px RR
+			line-height: 60px
+		&:focus
+			outline: none
+		&_m17
+			margin: 0 0 17px
+	&-btn-wrap
+		display: flex
+		flex-flow: row nowrap
+		justify-content: flex-start
+	&-textarea
+		box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06)
+		border-radius: 10px
+		background-color: #efe8f7
+		resize: none
+		border: none
+		padding: 25px 0 0 25px
+		color: #242424
+		font: 16px RR
+		line-height: 24px
+		border: 1px solid transparent
+		max-width: 555px
+		width: 100%
+		height: 216px
+		&:focus
+			outline: none
+			box-shadow: 0 0 9px rgba(127, 0, 255, 0.22)
+			border: 1px solid #e2c7ff
+			background-color: #fff
+		&::placeholder
+			color: #242424
+			font: 16px RR
+			line-height: 24px
+		&_h121
+			height: 121px
+		&_h181
+			height: 181px
+		&_h187
+			height: 187px
+	&-label
+		flex: 0 1 200px
+		height: 200px
+		box-shadow: 0 5px 38px rgba(0, 0, 0, 0.21)
+		border-radius: 30px
+		position: relative
+		margin: 0 0 30px
+		&:before
+			content: ''
+			width: 30px
+			height: 30px
+			border: 2px solid #c9c4d1
+			background-color: #ffffff
+			position: absolute
+			border-radius: 50%
+			top: 13px
+			left: 17px
+		&_checked
+			&:after
+				content: '\2714'
+				width: 34px
+				height: 34px
+				font-size: 28px
+				background-color: #8a3ef8
+				line-height: 35px
+				text-align: center
+				position: absolute
+				border-radius: 50%
+				color: #fff
+				top: 13px
+				left: 17px
+		img
+			height: 100%
+			width: 100%
+			border-radius: 30px
+	&-checkbox
+		display: none
+	&-file
+		max-width: 555px
+		margin: 0 auto 70px
+		text-align: left
+		&__svg
+			width: 29px
+			height: 18px
+		&__img
+			fill: red
+	&-price
+		&__header
+			display: flex
+			flex-flow: row nowrap
+			font-family: "Open Sans"
+			font-size: 20px
+			font-weight: 400
+			line-height: 30px
+		&__amount
+			margin: 0 22px 0 0
+			color: #ff636d
+			&_blue
+				color: #6900d4
+	&-switch
+		max-width: 605px
+		width: 100%
+		margin: 0 auto 28px
+		display: flex
+		flex-flow: row wrap
+		align-items: center
+		&__item
+			flex: 0 1 50%
+			height: 50px
+			cursor: pointer
+			border-radius: 24px 0 0 24px
+			background-color: #ff5762
+			transition: all .3s
+			color: #ffffff
+			font: 17px RWB
+			text-transform: uppercase
+			letter-spacing: 1.54px
+			&:hover
+				opacity: 0.2
+			&_blue
+				background-color: #6900d4
+				border-radius: 0 24px 24px 0
+			span
+				line-height: 46px
+
+	&_nonact
+		display: none
 
 @import "media.sass"

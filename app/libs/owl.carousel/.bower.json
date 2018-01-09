@@ -18,7 +18,6 @@
     "commit": "716474f2335242aa24b2d79c554b3496922c22bd"
   },
   "_source": "https://github.com/OwlFonk/OwlCarousel2.git",
-  "_target": "^2.2.1",
-  "_originalSource": "owl.carousel",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "owl.carousel"
 }

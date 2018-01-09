@@ -37,6 +37,8 @@ gulp.task('scripts', function() {
 		'app/libs/jquery/dist/jquery.js',
 		'app/libs/owl.carousel/dist/owl.carousel.js',
 		'app/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
+		'app/libs/fancybox/dist/jquery.fancybox.js',
+		'app/libs/scroll/src/jquery.scroolly.js',
 		'app/js/main.js'
 		])
 		.pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
