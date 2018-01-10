@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	//scrollMenu
 
-	var prev = 0;
+/*	var prev = 0;
 	var $window = $(window);
 	var header = $('.header');
 
@@ -10,126 +10,7 @@ $(document).ready(function() {
 		var scrollTop = $window.scrollTop();
 		header.toggleClass('header_hidden', scrollTop > prev);
 		prev = scrollTop;
-	});
-
-	//carts
-	var cart = (function() {
-		var products = [];
-		var amountArr, block, amountBtn, submitBtn, hiddenForm, innerVal;
-
-		return {
-			amountActionClick: function() {
-				amountBtn.on('click', function(event) {
-					event.preventDefault();
-					var field  =  $(this).parent().parent().find('.price-box__amount');
-					var fieldType = field.data('name');
-					var fieldValue = parseInt(field.val());
-					var  amountType =  $(this).data('amount');
-					var price = $(this).parent().parent().parent().parent().parent().find('.price-box__price span');
-					var priceVal = parseInt(price.text());
-					var discount = $(this).parent().parent().parent().parent().parent().find('.price-box__discount');
-					var discountAmount = $(this).parent().parent().parent().parent().parent().find('.price-box__discount i');
-					var discountVal = parseInt(discountAmount.text());
-					var btnPlus = $(this).parent().find('.amount-plus');
-					var btnMinus = $(this).parent().find('.amount-minus');
-
-
-					if(amountType === 'minus' && fieldType === 'choice') {
-						fieldValue  -= 1;
-						if(fieldValue < 3) {
-							fieldValue = 3;
-						}
-						if(fieldValue === 3) {
-							priceVal = 290;
-							discount.removeClass('price-box__discount_active');
-							btnMinus.removeClass('amount-btn_active');
-						}
-						if(fieldValue === 4) {
-							priceVal -= 50;
-							discountVal = 35;
-						}
-						if(fieldValue === 5) {
-							priceVal -= 40;
-							discountVal = 80;
-							btnPlus.removeClass('amount-btn_nonactive');
-						}
-					}
-					if(amountType === 'plus' && fieldType === 'choice') {
-						fieldValue  += 1;
-						if(fieldValue === 4) {
-							priceVal += 60;
-							discount.addClass('price-box__discount_active');
-							btnMinus.addClass('amount-btn_active');
-						}
-						if(fieldValue === 5) {
-							priceVal += 50;
-							discountVal = 80;
-						}
-						if(fieldValue === 6) {
-							priceVal += 40;
-							discountVal = 135;
-							btnPlus.addClass('amount-btn_nonactive');
-						}
-						if(fieldValue > 6) {
-							fieldValue = 6;
-						}
-					}
-					if(amountType === 'minus' && fieldType === 'branding') {
-						fieldValue  -= 1;
-						if(fieldValue < 6) {
-							fieldValue = 6;
-						}
-						if(fieldValue === 6) {
-							priceVal = 690;
-							discountVal = 150;
-							btnMinus.removeClass('amount-btn_active-blue');
-						}
-						if(fieldValue === 7) {
-							priceVal -= 50;
-							discountVal = 175;
-						}
-						if(fieldValue === 8) {
-							priceVal -= 40;
-							discountVal = 220;
-							btnPlus.removeClass('amount-btn_nonactive');
-						}
-					}
-					if(amountType === 'plus' && fieldType === 'branding') {
-						fieldValue  += 1;
-						if(fieldValue === 7) {
-							priceVal += 60;
-							discountVal = 175;
-							btnMinus.addClass('amount-btn_active-blue');
-						}
-						if(fieldValue === 8) {
-							priceVal += 50;
-							discountVal = 220;
-						}
-						if(fieldValue === 9) {
-							priceVal += 40;
-							discountVal = 275;
-							btnPlus.addClass('amount-btn_nonactive');
-						}
-						if(fieldValue > 9) {
-							fieldValue = 9;
-						}
-					}
-
-					price.text(priceVal);
-					discountAmount.text(discountVal);
-					field.val(fieldValue);
-
-				})
-			},
-			init: function(setblock) {
-				block = $(setblock);
-				amountBtn = block.find('.amount-btn');
-				this.amountActionClick();
-			}
-		}
-	})();
-
-	cart.init('.amount');
+	});*/
 
 	////PageScrollToID
 	var headerHeight = $('.header').height();
@@ -218,7 +99,7 @@ $(document).ready(function() {
 	var prSliderImg = $('.projects-slider1 .owl-item').find('img').clone();
 	var prSliderPag = $('.projects-pag__item');
 
-	prSliderPag.on('click', function() {
+	prSliderPag.on('click', function(e) {
 		prSliderPag.removeClass('projects-pag__item_active');
 		$(this).addClass('projects-pag__item_active');
 	})
@@ -309,7 +190,7 @@ $(document).ready(function() {
 	})
 
 	$('.team-carousel').owlCarousel({
-		loop:true,
+		loop:false,
 		margin:35,
 		responsiveClass:true,
 		dots: true,
@@ -336,6 +217,155 @@ $(document).ready(function() {
 		}
 	})
 
+	//carts
+	var cart = (function() {
+		var products = [];
+		var amountArr, block, amountBtn, submitBtn, hiddenForm, innerVal;
+
+		return {
+			amountActionClick: function() {
+				amountBtn.on('click', function(event) {
+					event.preventDefault();
+					var field  =  $(this).parent().parent().find('.price-box__amount');
+					var fieldType = field.data('name');
+					var fieldValue = parseInt(field.val());
+					var  amountType =  $(this).data('amount');
+					var price = $(this).parent().parent().parent().parent().parent().find('.price-box__price span').first();
+					var priceThrought = $(this).parent().parent().parent().parent().parent().find('.price-box__price span').last();
+					var priceVal = parseInt(price.text());
+					var priceThroughtVal =parseInt(priceThrought.text());
+					var discount = $(this).parent().parent().parent().parent().parent().find('.price-box__discount');
+					var discountAmount = $(this).parent().parent().parent().parent().parent().find('.price-box__discount i');
+					var discountVal = parseInt(discountAmount.text());
+					var btnPlus = $(this).parent().find('.amount-plus');
+					var btnMinus = $(this).parent().find('.amount-minus');
+
+
+					if(amountType === 'minus' && fieldType === 'choice') {
+						fieldValue  -= 1;
+						if(fieldValue < 3) {
+							fieldValue = 3;
+						}
+						if(fieldValue === 3) {
+							priceVal = 290;
+							priceThrought.removeClass('price-box__through_active');
+							discount.removeClass('price-box__discount_active');
+							btnMinus.removeClass('amount-btn_active');
+						}
+						if(fieldValue === 4) {
+							priceVal -= 50;
+							priceThroughtVal -= 95;
+							discountVal = 35;
+						}
+						if(fieldValue === 5) {
+							priceVal -= 40;
+							priceThroughtVal -= 95;
+							discountVal = 80;
+							btnPlus.removeClass('amount-btn_nonactive');
+						}
+					}
+					if(amountType === 'plus' && fieldType === 'choice') {
+						fieldValue  += 1;
+						if(fieldValue === 4) {
+							priceVal += 60;
+							priceThrought.addClass('price-box__through_active');
+							priceThroughtVal = 385;
+							discount.addClass('price-box__discount_active');
+							btnMinus.addClass('amount-btn_active');
+						}
+						if(fieldValue === 5) {
+							priceVal += 50;
+							priceThroughtVal += 95;
+							discountVal = 80;
+						}
+						if(fieldValue === 6) {
+							priceVal += 40;
+							priceThroughtVal += 95;
+							discountVal = 135;
+							btnPlus.addClass('amount-btn_nonactive');
+						}
+						if(fieldValue > 6) {
+							fieldValue = 6;
+						}
+					}
+					if(amountType === 'minus' && fieldType === 'branding') {
+						fieldValue  -= 1;
+						if(fieldValue < 6) {
+							fieldValue = 6;
+						}
+						if(fieldValue === 6) {
+							priceVal = 690;
+							priceThroughtVal = 830;
+							discountVal = 150;
+							btnMinus.removeClass('amount-btn_active-blue');
+						}
+						if(fieldValue === 7) {
+							priceVal -= 50;
+							priceThroughtVal -= 95;
+							discountVal = 175;
+						}
+						if(fieldValue === 8) {
+							priceVal -= 40;
+							priceThroughtVal -= 95;
+							discountVal = 220;
+							btnPlus.removeClass('amount-btn_nonactive');
+						}
+					}
+					if(amountType === 'plus' && fieldType === 'branding') {
+						fieldValue  += 1;
+						if(fieldValue === 7) {
+							priceVal += 60;
+							priceThroughtVal += 95;
+							discountVal = 175;
+							btnMinus.addClass('amount-btn_active-blue');
+						}
+						if(fieldValue === 8) {
+							priceVal += 50;
+							priceThroughtVal += 95;
+							discountVal = 220;
+						}
+						if(fieldValue === 9) {
+							priceVal += 40;
+							priceThroughtVal += 95;
+							discountVal = 275;
+							btnPlus.addClass('amount-btn_nonactive');
+						}
+						if(fieldValue > 9) {
+							fieldValue = 9;
+						}
+					}
+
+					price.text(priceVal);
+					priceThrought.text(priceThroughtVal);
+					discountAmount.text(discountVal);
+					field.val(fieldValue);
+
+				})
+			},
+			init: function(setblock) {
+				block = $(setblock);
+				amountBtn = block.find('.amount-btn');
+				this.amountActionClick();
+			}
+		}
+	})();
+
+	cart.init('.amount');
+
+
+	//CardsHoverTooltips
+
+	var tooltips = $('.price__question');
+
+	tooltips.hover(function() {
+		$(this).find('.price__question-hidden').addClass('price__question-hidden_active')
+	})
+
+	tooltips.mouseleave(function() {
+		$(this).find('.price__question-hidden').removeClass('price__question-hidden_active')
+	})
+
+
 	//Tabs
 
 	var tabs = $('.faq-list__item');
@@ -348,6 +378,7 @@ $(document).ready(function() {
 				if(i === ind) {
 					$(el).toggleClass('faq-hidden-block_active')
 				} else {
+					$(el).parent().removeClass('faq-list__item_active')
 					$(el).removeClass('faq-hidden-block_active')
 				}
 			})
@@ -355,38 +386,40 @@ $(document).ready(function() {
 	})
 
 	//BriefProgressBar
+
 	var progressBar = $('.brief-progress__item');
+	if(progressBar.length === 1) {
+		$(window).scroll(function() {
+			var progress = $(window).scrollTop();
+			var docHeight = $(document).height();
+			var windowHeight = $(window).height();
 
-	$(window).scroll(function() {
-		var progress = $(window).scrollTop();
-		var docHeight = $(document).height();
-		var windowHeight = $(window).height();
-
-		var scrollPercent = (progress / (docHeight-windowHeight)) * 100;
-		progressBar.css('width',  scrollPercent + '%')
-	})
+			var scrollPercent = (progress / (docHeight-windowHeight)) * 100;
+			progressBar.css('width',  scrollPercent + '%')
+		})
+	}
 
 	//BriefScroll
 
-	$('.brief-form__item').scroolly([
-	{
-		from: 'el-top = vp-bottom - 50px',
-		to: 'el-bottom = vp-bottom - 50px',
-		cssFrom:{opacity:'.0'},
-		cssTo:{opacity:'1'}
-	},
-	{
-		from: 'el-center = vp-center + 60vp',
-		to: 'el-center = vp-center - 60vp',
-		cssFrom:{'opacity': '1'},
-		cssTo:{'opacity': '1'}
-	},
-	{
-		from: 'el-top = vp-top + 50px',
-		to:   'el-bottom = vp-top + 50px',
-		cssFrom:{opacity:'1'},
-		cssTo:{opacity:'.0'},
-	}
+	$('.brief-form .brief-form__item').scroolly([
+		{
+			from: 'el-top = vp-bottom - 50px',
+			to: 'el-bottom = vp-bottom - 50px',
+			cssFrom:{opacity:'.0'},
+			cssTo:{opacity:'1'}
+		},
+		{
+			from: 'el-center = vp-center + 60vp',
+			to: 'el-center = vp-center - 60vp',
+			cssFrom:{'opacity': '1'},
+			cssTo:{'opacity': '1'}
+		},
+		{
+			from: 'el-top = vp-top + 50px',
+			to:   'el-bottom = vp-top + 50px',
+			cssFrom:{opacity:'1'},
+			cssTo:{opacity:'.0'},
+		}
 	]);
 
 	//BriefCheckbox
@@ -405,24 +438,45 @@ $(document).ready(function() {
 	})
 
 
-
-	//BriefSWITH
+	//BriefSWITCH
 
 	var bSwitch = $('.brief-switch__item');
 	var bSwitchedElements = $('.price-box_brief');
 
 	bSwitch.each(function(i, e) {
 		$(e).on('click', function() {
+			bSwitchedElements.removeClass('price-box_brief_active')
 			bSwitchedElements.each(function(ind, el) {
-				$(el).addClass('price-box_brief_not-active')
 				if(i === ind) {
-					$(el).removeClass('price-box_brief_not-active')
+					$(el).addClass('price-box_brief_active')
 				}
 			})
 		})
 	})
 
 });
+
+
+	//BriefFilesSelect
+
+	var labelInp = $('.brief-file__label');
+	var briefInp = $('.brief-file__input');
+	var briefWrap = $('.brief-file__wrap');
+	var briefInner = $('.brief-file__par');
+	var briefBtn = $('.brief-file__btn');
+
+
+	briefInp.on('change', function() {
+		var briefInpValue = briefInp.val().split("\\").pop();
+		briefWrap.addClass('brief-file__wrap_active');
+		briefInner.html(briefInpValue)
+	})
+
+	briefBtn.on('click', function() {
+		$(this).parent().removeClass('brief-file__wrap_active');
+		briefInp.val('')
+		console.log(briefInp)
+	})
 
 //ACtiveLink
 var navLinks = document.getElementsByClassName('nav__item');
