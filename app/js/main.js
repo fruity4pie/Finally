@@ -406,27 +406,54 @@ $(document).ready(function() {
 	}
 
 	//BriefScroll
+	if ( $(window).width() > 750) {
+		$('.brief-form .brief-form__item').scroolly([
+			{
+				from: 'el-top = vp-bottom - 50px',
+				to: 'el-bottom = vp-bottom - 50px',
+				cssFrom:{opacity:'.0'},
+				cssTo:{opacity:'1'}
+			},
+			{
+				from: 'el-center = vp-center + 60vp',
+				to: 'el-center = vp-center - 60vp',
+				cssFrom:{'opacity': '1'},
+				cssTo:{'opacity': '1'}
+			},
+			{
+				from: 'el-top = vp-top + 50px',
+				to:   'el-bottom = vp-top + 50px',
+				cssFrom:{opacity:'1'},
+				cssTo:{opacity:'.0'},
+			}
+		]);
+	}
 
-	$('.brief-form .brief-form__item').scroolly([
-		{
-			from: 'el-top = vp-bottom - 50px',
-			to: 'el-bottom = vp-bottom - 50px',
-			cssFrom:{opacity:'.0'},
-			cssTo:{opacity:'1'}
-		},
-		{
-			from: 'el-center = vp-center + 60vp',
-			to: 'el-center = vp-center - 60vp',
-			cssFrom:{'opacity': '1'},
-			cssTo:{'opacity': '1'}
-		},
-		{
-			from: 'el-top = vp-top + 50px',
-			to:   'el-bottom = vp-top + 50px',
-			cssFrom:{opacity:'1'},
-			cssTo:{opacity:'.0'},
+	$(window).resize(function() {
+		if( $(this).width() > 750 ) {
+			$('.brief-form .brief-form__item').scroolly([
+				{
+					from: 'el-top = vp-bottom - 50px',
+					to: 'el-bottom = vp-bottom - 50px',
+					cssFrom:{opacity:'.0'},
+					cssTo:{opacity:'1'}
+				},
+				{
+					from: 'el-center = vp-center + 60vp',
+					to: 'el-center = vp-center - 60vp',
+					cssFrom:{'opacity': '1'},
+					cssTo:{'opacity': '1'}
+				},
+				{
+					from: 'el-top = vp-top + 50px',
+					to:   'el-bottom = vp-top + 50px',
+					cssFrom:{opacity:'1'},
+					cssTo:{opacity:'.0'},
+				}
+			]);
 		}
-	]);
+	});
+
 
 	//BriefCheckbox
 
