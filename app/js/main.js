@@ -1,21 +1,27 @@
 $(document).ready(function() {
 
-	//scrollMenu
-
-/*	var prev = 0;
-	var $window = $(window);
-	var header = $('.header');
-
-	$window.on('scroll', function(){
-		var scrollTop = $window.scrollTop();
-		header.toggleClass('header_hidden', scrollTop > prev);
-		prev = scrollTop;
-	});*/
-
 	////PageScrollToID
 	var headerHeight = $('.header').height();
 	$("a[href*='#']").mPageScroll2id({
 		offset: headerHeight
+	});
+
+
+	$('.btn-brief').on('click', function(e) {
+		var el = $( e.target.getAttribute('href') );
+		var elOffset = el.offset().top;
+		var elHeight = el.outerHeight();
+		var windowHeight = $(window).height();
+		var offset;
+		console.log(elHeight)
+		if (elHeight < windowHeight) {
+			offset = elOffset - ((windowHeight / 2) - (elHeight / 2));
+		}
+		else {
+			offset = elOffset;
+		}
+		$.smoothScroll({ speed: 700 }, offset);
+		return false;
 	});
 
 	$('.about-carousel').owlCarousel({
@@ -432,6 +438,7 @@ $(document).ready(function() {
 			briefsLabels.each(function(ind, el) {
 				if(i === ind) {
 					$(el).toggleClass('brief-label_checked')
+					$(el).find('.brief-label__hidden-bg').toggleClass('brief-label__hidden-bg_active')
 				}
 			})
 		})
@@ -445,10 +452,10 @@ $(document).ready(function() {
 
 	bSwitch.each(function(i, e) {
 		$(e).on('click', function() {
-			bSwitchedElements.removeClass('price-box_brief_active')
+			bSwitchedElements.removeClass('price-box_brief-active')
 			bSwitchedElements.each(function(ind, el) {
 				if(i === ind) {
-					$(el).addClass('price-box_brief_active')
+					$(el).addClass('price-box_brief-active')
 				}
 			})
 		})
